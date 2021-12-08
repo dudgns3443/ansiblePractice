@@ -1,0 +1,12 @@
+---
+- name: del
+  hosts: webservers
+  tasks:
+  - name: delete web
+    service: 
+      name: httpd
+      state: stopped
+  - name : del
+    yum:
+      name: httpd
+      state: absent
