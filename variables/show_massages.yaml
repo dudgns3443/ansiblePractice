@@ -1,0 +1,20 @@
+---
+- name: print string
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: print message1
+    debug:
+      msg: Hello~ bespiner~ 
+           How are you today?
+  - name: print message2
+    debug:
+      msg: |        
+           Will you meet at 1:00pm?
+           please send message.
+  - name: print message3
+    debug:
+      msg: >     
+           bye
+           see you.
+

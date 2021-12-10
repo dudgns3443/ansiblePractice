@@ -1,0 +1,22 @@
+---
+- hosts: seoul
+  tasks:
+  - yum:
+      name:
+      - httpd
+      - mariadb-server
+      - php
+      - php-mysql
+      state: latest
+  - service:
+      name: mariadb
+      state: started
+  - service:
+      name: httpd
+      state: started
+  - copy:
+      content: <?php echo "HI BTC"; ?>
+      dest: /var/www/html/index.php
+- name: testing
+  hosts:
+

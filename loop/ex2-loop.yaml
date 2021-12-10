@@ -1,0 +1,17 @@
+- name: Working with loop module
+  hosts: seoul
+  gather_facts: false
+  tasks:
+    - name: Iterate over dictionary
+      debug:
+        msg:
+         - "The {{ item.key }} of your car is {{ item.value }}"
+
+      loop: "{{ my_car | dict2items }}"  // loop 구문에서 Key:Value 로 필터링
+      vars:
+        my_car:
+          Color: Black
+          Model: Benz GLC400
+          Transition: Manual
+          Price: $200,000
+

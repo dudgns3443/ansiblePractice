@@ -1,0 +1,41 @@
+---
+- name: Install nginx
+  hosts: busan
+  tasks:
+  - name: Install eple
+    yum:
+      name: epel-release
+      state: present
+  - name: Install nginx
+    yum: 
+      name: nginx
+      state: present
+  - name: start nginx
+    service:
+      name: nginx
+      state: started
+- name: Install mariaDB
+  hosts: busan
+  vars:
+    mysql_root_password: pass
+  tasks:
+  - name: Install mariaDB
+    yum:
+      name: 
+      - mariadb
+      - mariadb-server
+      - python2-PyMySQL
+      state: latest
+      # - name: set root password
+      # mysql_user:
+      # check_implicit_admin: true
+      # login_user: root
+      # login_password: "{{ mysql_root_password }}"
+      # user: root                                          //업데이트된 사용자
+      # password: "{{ mysql_root_password }}"
+  - name: start mariadb service
+    service:
+      name: mariadb
+      enabled: true
+      state: started
+

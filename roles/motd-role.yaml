@@ -1,0 +1,7 @@
+---
+- name: motd role
+  hosts: all
+  remote_user: bespin
+  become: true
+  roles:
+    - motd

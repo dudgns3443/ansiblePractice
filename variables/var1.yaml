@@ -1,0 +1,7 @@
+- hosts: webservers
+  vars:
+    greeting: Hello world!
+  tasks:
+  - name: ansible example
+    debug:
+      msg: "{{ greeting }}"

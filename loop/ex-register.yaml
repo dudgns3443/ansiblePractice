@@ -1,0 +1,15 @@
+- name: Loop Register Test
+  gather_facts: no
+  hosts: seoul
+  tasks:
+    - name: Looping Task
+      shell: "echo This is my item: {{ item }}"
+      loop:
+        - tiger
+        - lion
+      register: results1
+
+    - name: Show results variable
+      debug:
+        var: results1
+

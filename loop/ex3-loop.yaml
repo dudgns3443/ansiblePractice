@@ -1,0 +1,17 @@
+- hosts: seoul
+  become: yes
+  tasks:
+    - name: Create new users
+      user:
+        name: '{{ item.name }}'
+        uid: '{{ item.uid }}'
+        state: present
+
+      loop:
+        - name: park
+          uid: 1020
+        - name: kim
+          uid: 1030
+        - name: lee
+          uid: 1040
+

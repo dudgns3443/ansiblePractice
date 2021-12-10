@@ -1,0 +1,13 @@
+vi condition_sys.yml
+---
+- name: When Condition example
+  hosts: serverb.test.com
+  tasks:
+    - name: when example
+      debug:
+        msg: This system is Now 64bit
+      when: ansible_facts.machine == 'x86_64'  
+    - name: just print message
+      debug:
+        msg: beha~
+

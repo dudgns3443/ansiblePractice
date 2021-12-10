@@ -1,0 +1,11 @@
+---
+- name: block test
+  hosts: seoul
+  tasks:
+    - name: block test
+      blockinfile:
+        path: /tmp/hello_ansible_world
+        block: >
+          Welcome to the BespinGlobal world.
+          Show your ability in BespinGlobal world.
+        state: present

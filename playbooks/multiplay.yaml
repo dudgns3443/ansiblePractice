@@ -1,0 +1,30 @@
+- name: Enable webserver
+  hosts: seoul
+  tasks:
+  - name: Install web
+    yum:
+      name: 
+      - httpd
+      - firewalld
+      state: present
+  - name: Make web source
+    copy:
+      content: 'Hello Bespin'
+      dest: /var/www/html/index.html
+
+- name: Start Demon
+  hosts: seoul
+  tasks:
+  - name: Start httpd service
+    service:
+      name: httpd
+      state: started
+  - name: Start firewalld service
+    service:
+      name: firewalld
+      state: started
+  - name: set firewall
+    firewall:
+      service: http
+      permanent: true
+      immediatly: true

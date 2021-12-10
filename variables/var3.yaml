@@ -1,0 +1,19 @@
+- name: Install and configure webserver
+  hosts: seoul
+  vars:
+    web_pkg: httpd
+    firewall_pkg: firewalld
+    mython_pkg: python2-PyMySQL
+    firewall_service: firewalld
+    web_service: httpd
+    rule: http
+  tasks:
+  - name: Install httpd
+    yum: 
+      name: "{{ web_pkg }}"
+      state: present
+  - name: service start
+    service:
+      name: "{{ web_service }}"
+      state: started
+      enabled: yes

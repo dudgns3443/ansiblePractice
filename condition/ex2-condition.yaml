@@ -1,0 +1,21 @@
+[bespin@control ansible]$ vim when-exam2.yaml 
+- name : List when test
+  hosts: seoul
+  vars:
+    supported_distros:
+      - RedHat
+      - CentOS
+      - Fedora
+      - Ubuntu
+
+  tasks:
+    - name : debug
+      debug:
+        msg: "{{ ansible_distribution }}"
+
+    - name: Install httpd using yum
+      yum:
+        name: httpd
+        state: present
+      when: ansible_distribution in supported_distros
+
